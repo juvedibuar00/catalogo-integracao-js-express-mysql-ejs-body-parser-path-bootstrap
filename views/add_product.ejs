@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar produtos</title>
+
+    <!-- CHAMANDO BOOTSTRAP -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="mt-5">Adcionar produto</h1>
+        <form action="/add_product" method="POST">
+            <!-- Nome -->
+            <div class="form-group">
+                <label form="name">Nome</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do produto" required>
+            </div>
+            <!-- Quantidade -->
+            <div class="form-group">
+
+                <label for="quantity">Quantiidade</label>
+                <input class="form-control" type="number" id="quantity" name="quantity" placeholder="000000" required>
+            </div>
+
+            <!-- Preço -->
+            <div class="form-group">
+                <label for="price">Preço</label>
+
+                <input class="form-control" type="number" id="price" name="price" placeholder="R$ 00,00" required>
+            </div>
+            <!-- Botão de envio -->
+            <button class="btn btn-primary">Adicionar</button>
+        </form>
+
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
