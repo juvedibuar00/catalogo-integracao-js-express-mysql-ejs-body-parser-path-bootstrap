@@ -44,3 +44,24 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 
 // Configurar os arquivos JS do Bootstrap para rota padrão
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+
+
+
+// Criar rota com o Formulário
+
+
+// Coleta do Formulário
+app.post('/add_product', (req, res) => {
+    const {name, quantity, price} = req.body
+    if(!name || !quantity || !price) {
+        return res.status(400) .send('Todos os campos são obrigatórios!')
+    }
+    // Configuração de coleta do DB
+    const sql = 'INSERT INTO products (nome, quantity, price) VALUES (?,?,?)'
+    db.query(sql, [name, quantity, price], (err, result) => {
+        if(err) {
+            throw err
+        }
+        res.redirect('products')
+    })
+})
