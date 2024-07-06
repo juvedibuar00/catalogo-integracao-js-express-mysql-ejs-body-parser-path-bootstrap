@@ -88,7 +88,7 @@ app.get('/products', (req, res) => {
         if (err) {
             throw err
         }
-        res.render('list_products', { prod: result })
+        res.render('list_product', { prod: result })
     })
 })
 
