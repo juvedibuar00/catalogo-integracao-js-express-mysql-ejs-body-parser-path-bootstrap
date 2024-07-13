@@ -6,29 +6,39 @@
     <title>Lita de Produtos</title>
      <!-- CHAMANDO BOOTSTRAP -->
      <link rel="stylesheet" href="/css/bootstrap.min.css">
+     <style>
+        .table {
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(29, 29, 136);
+            background-color: rgb(189, 172, 172);
+        }
+     </style>
 </head>
 <body>
     <div class="container">
         <h1>Lista de produtos</h1>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>nome</th>
-                    <th>Quantidade</th>
-                    <th>Valor</th>
+                <tr class="table">
+                    <th>Nome</th>
+                    <th>Quantidade  nº </th>
+                    <th>Valor - R$ </th>
                     <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody>
                 <% prod.forEach (product => { %>
-                    <tr>
+                    <tr class="table">
                         <td><%= product.nome %></td>
                         <td><%= product.quantity %></td>
                         <td><%= product.price %></td>
                         <td>
-                            <button class="btn btn-warning btn-sm">Editar</button>
-                            <button class="btn btn-danger btn-sm">Excluir</button>
+                            <button href="/edit_product/<%= product.id %>" class="btn btn-warning btn-sm">Editar</button>
+                            <button href="/delete_product/<%= product.id %>" class="btn btn-danger btn-sm">Excluir</button>
                         </td>
                     </tr>
                     <% }) %>
