@@ -92,6 +92,48 @@ app.get('/products', (req, res) => {
     })
 })
 
+// FUNCAO DE DELEÇÃO
+app.get('/delete_product/:id', (req, res) => {
+    const {id} = req.params
+    let sql = 'DELETE FROM products WHERE  id = ?'
+    db.query(sql, [id], (err, result) => {
+        if (err) {
+            throw err
+        }
+        console.log('Produto deletado com sucesso' , result)
+        res.redirect('/products')
+    })
+})
+
+
+// FUNCAO DE EDIÇÃO
+app.get('/edit_product/:id', (req, res) => {
+    const {id} = req.params
+    let sql =  'SELECT * FROM products WHERE id = ?'
+    db.query(sql, [id], (err, result) => {
+        if (err) {
+            throw err
+        }
+        res.render('edit_product' , {product: result[0]})
+    })
+})
+
+app.post('/edit_product/:id' , (req, res) => {
+    const {id} = req.params
+    const {name, quantity, price} = req.body
+    let sql = 'UPDATE products SET nome = ?, quantity = ?, price = ? WHERE id = ?'
+
+    db.query(sql, [name, quantity, price, id], (err, result) =>{
+        if (err) {
+            throw err
+        }
+
+        console.log('Produto atualizado com sucesso', result)
+        res.redirect('/products')
+    })
+})
+
+
 app.listen(3000, () => {
     console.log('Servidor aberto')
 })

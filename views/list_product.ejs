@@ -29,7 +29,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-
+            <!-- CTRL + PARA SELECIONAR AS MESMAS PALAVRAS NO TEXTO -->
             <tbody>
                 <% prod.forEach (product => { %>
                     <tr class="table">
@@ -37,8 +37,8 @@
                         <td><%= product.quantity %></td>
                         <td><%= product.price %></td>
                         <td>
-                            <button href="/edit_product/<%= product.id %>" class="btn btn-warning btn-sm">Editar</button>
-                            <button href="/delete_product/<%= product.id %>" class="btn btn-danger btn-sm">Excluir</button>
+                            <a href="/edit_product/<%= product.id %>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/delete_product/<%= product.id %>" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
                     <% }) %>
